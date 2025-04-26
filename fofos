@@ -1,0 +1,22 @@
+<div>
+    <fieldset>
+        <legend>Pergunta ultra séria</legend>
+        <input type="checkbox" name="lindo" id="lindo" value="siim">
+        <label for="lindo">Você concorda com isso?</label>
+    </fieldset>
+    <p id="mensagem" style="display:none; color: green; font-weight: bold;"></p>
+</div>
+
+<script>
+    const checkbox = document.getElementById('lindo');
+    const mensagem = document.getElementById('mensagem');
+
+    checkbox.addEventListener('change', function() {
+        if (checkbox.checked) {
+            mensagem.textContent = "Isso mesmo, você é muito lindo!";
+            mensagem.style.display = 'block';
+        } else {
+            mensagem.style.display = 'none';
+        }
+    });
+</script>

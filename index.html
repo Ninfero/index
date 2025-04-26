@@ -1,19 +1,43 @@
 <div>
     <fieldset>
         <legend>Pergunta ultra séria</legend>
-        <input type="checkbox" name="lindo" id="lindo" value="siim">
-        <label for="lindo">Você concorda com isso?</label>
+        
+        <!-- Campo para digitar o nome -->
+        <input type="text" id="nome" placeholder="Digite seu nome">
+        <button id="confirmarNome">Confirmar</button>
+
+        <!-- Checkbox escondido inicialmente -->
+        <div id="areaCheckbox" style="display:none; margin-top: 10px;">
+            <input type="checkbox" id="lindo" value="siim">
+            <label for="lindo" id="labelLindo"></label>
+        </div>
+
+        <!-- Mensagem final -->
+        <p id="mensagem" style="display:none; color: green; font-weight: bold;"></p>
     </fieldset>
-    <p id="mensagem" style="display:none; color: green; font-weight: bold;"></p>
 </div>
 
 <script>
+    const confirmarNome = document.getElementById('confirmarNome');
+    const nomeInput = document.getElementById('nome');
+    const areaCheckbox = document.getElementById('areaCheckbox');
+    const labelLindo = document.getElementById('labelLindo');
     const checkbox = document.getElementById('lindo');
     const mensagem = document.getElementById('mensagem');
 
+    confirmarNome.addEventListener('click', function() {
+        const nome = nomeInput.value.trim();
+        if (nome !== "") {
+            labelLindo.textContent = `Mas é você mesmo, ${nome}?`;
+            areaCheckbox.style.display = 'block';
+        } else {
+            alert("Por favor, digite seu nome!");
+        }
+    });
+
     checkbox.addEventListener('change', function() {
         if (checkbox.checked) {
-            mensagem.textContent = "Isso mesmo, você é muito lindo!";
+            mensagem.textContent = `OMG!!!${nomeInput.value.trim()}, o mais lindo! `;
             mensagem.style.display = 'block';
         } else {
             mensagem.style.display = 'none';
